@@ -1,0 +1,8 @@
+.obsidian/
+desktop.ini
+Sin título.base
+Sin título.canvas
+*.tmp
+.DS_Store
+*.pyc
+__pycache__/

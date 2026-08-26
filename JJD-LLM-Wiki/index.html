@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJD Publications LLM Wiki</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Marked Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Marked Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <style>
+        :root {
+            /* Genyo Fusion (QFUNO 25/26) Design System - Light Theme by Default */
+            --bg-base: #F5F5F5; /* Slate background */
+            --bg-surface: #FFFFFF; /* White surfaces */
+            --bg-card: #FFFFFF; /* White card backgrounds */
+            --bg-card-hover: #FCFCFC;
+            --border-color: rgba(0, 128, 128, 0.12); /* Teal base borders */
+            --border-hover: rgba(0, 128, 128, 0.25);
+            
+            --text-primary: #000000; /* Pure Black body text for readability */
+            --text-secondary: #36454F; /* Charcoal text */
+            --text-muted: #64748B; /* Slate Gray captions */
+            
+            --primary: #008080; /* Teal primary */
+            --primary-glow: rgba(0, 128, 128, 0.15);
+            --primary-light: #00a6a6;
+            --secondary: #3EB489; /* Mint secondary */
+            --secondary-glow: rgba(62, 180, 137, 0.15);
+            --accent: #FF7F50; /* Coral tertiary */
+            
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-glow: 0 0 20px rgba(0, 128, 128, 0.15);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px; /* Rounded corners at 20px */
+            --radius-xl: 30px;
+            
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            --logo-filter: none; /* Logo color preservation in light mode */
+        }
+        
+        /* Dark Theme overrides (Cyberpunk Teal/Mint version of QFUNO) */
+        body.dark-theme {
+            --bg-base: #080d0d;
+            --bg-surface: #0e1414;
+            --bg-card: #131b1b;
+            --bg-card-hover: #192424;
+            --border-color: rgba(0, 166, 166, 0.15);
+            --border-hover: rgba(0, 166, 166, 0.3);
+            
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #64748b;
+            
+            --primary: #00a6a6;
+            --primary-glow: rgba(0, 166, 166, 0.3);
+            --primary-light: #5eead4;
+            --secondary: #5edcae;
+            --secondary-glow: rgba(94, 220, 174, 0.2);
+            --accent: #ffa07a;
+            
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 20px rgba(0, 166, 166, 0.25);
+            
+            --logo-filter: invert(1); /* Invert logo text to white in dark mode */
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) var(--bg-base);
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-hover);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            transition: var(--transition);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        /* CORS Warning Banner */
+        #cors-banner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #ef4444, #f59e0b);
+            color: white;
+            padding: 12px 24px;
+            z-index: 9999;
+            text-align: center;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        #cors-banner button {
+            background: white;
+            color: #ef4444;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        /* Sidebar Layout */
+        .sidebar {
+            width: 280px;
+            background-color: var(--bg-surface);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 32px 20px;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 36px;
+            padding: 0 8px;
+        }
+        
+        .sidebar-brand-logo-container {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            border: 3px solid rgba(0, 128, 128, 0.2);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .sidebar-brand-logo {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+        
+        .sidebar-brand-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text-primary);
+        }
+        
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+        
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover, .menu-item.active {
+            background-color: var(--bg-card-hover);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .menu-item.active {
+            border-left: 5px solid var(--primary);
+            padding-left: 11px;
+            background-color: var(--bg-card);
+        }
+        
+        .sidebar-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        /* Toggle Switch */
+        .theme-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            width: 100%;
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .theme-toggle-btn:hover {
+            border-color: var(--border-hover);
+            color: var(--primary);
+            background-color: var(--bg-card-hover);
+        }
+        
+        /* Main Layout */
+        .main-container {
+            display: flex;
+            flex-grow: 1;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .content-area {
+            flex-grow: 1;
+            padding: 32px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            height: 100%;
+        }
+        
+        /* Header Stats dashboard - Hero Header style */
+        .dashboard-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, #36454F 100%); /* Teal to Charcoal */
+            padding: 36px 40px;
+            border-radius: var(--radius-lg);
+            color: #FFFFFF;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        /* Subtle cross pattern overlay */
+        .dashboard-header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px),
+                radial-gradient(circle, rgba(255,255,255,0.08) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .dashboard-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #FFFFFF !important;
+            -webkit-text-fill-color: initial !important;
+            background: none !important;
+            z-index: 2;
+        }
+        
+        .dashboard-subtitle {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-size: 1.05rem;
+            z-index: 2;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            flex-shrink: 0;
+        }
+        
+        .stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        /* Expandable top accent bar */
+        .stat-card::before, .entity-card::before, .search-filter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--secondary); /* Mint accent */
+            transition: var(--transition);
+            transform: scaleX(0.2);
+            transform-origin: center;
+        }
+        
+        .stat-card:hover::before, .entity-card:hover::before, .search-filter-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .stat-card:hover, .entity-card:hover, .search-filter-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+        }
+        
+        /* 70px Icon wrappers */
+        .stat-icon {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(0, 128, 128, 0.1); /* 10% primary */
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover .stat-icon {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            transform: scale(1.1);
+        }
+        
+        /* Publications Search & Filter list */
+        .search-filter-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+        }
+        
+        .search-box-container {
+            display: flex;
+            gap: 12px;
+            position: relative;
+        }
+        
+        .search-input {
+            flex-grow: 1;
+            background-color: var(--bg-base);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 14px 16px 14px 48px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-glow);
+        }
+        
+        .search-icon-inside {
+            position: absolute;
+            left: 16px;
+            top: 14px;
+            color: var(--text-muted);
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+        
+        .filter-chip {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-chip:hover, .filter-chip.active {
+            border-color: var(--primary);
+            color: var(--text-primary);
+        }
+        
+        .filter-chip.active {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* Items List */
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .item-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg); /* 20px */
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .item-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: var(--secondary); /* Mint */
+            transition: var(--transition);
+            transform: scaleX(0.2);
+            transform-origin: center;
+        }
+        
+        .item-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .item-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .item-main {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex-grow: 1;
+        }
+        
+        .item-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        
+        .item-authors {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .item-metadata {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        
+        .badge-article { background-color: var(--primary-glow); color: var(--primary); border: 1px solid rgba(0, 128, 128, 0.3); }
+        .badge-patent { background-color: var(--secondary-glow); color: var(--secondary); border: 1px solid rgba(62, 180, 137, 0.3); }
+        .badge-thesis { background-color: rgba(236, 72, 153, 0.15); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.3); }
+        .badge-grant { background-color: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.3); }
+        
+        .item-year {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+        
+        .btn-action {
+            background-color: #E2E8F0; /* light slate background */
+            border: none;
+            color: #36454F; /* charcoal text */
+            padding: 10px 24px;
+            border-radius: 100px; /* pill-shaped */
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .btn-action:hover {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            box-shadow: var(--shadow-glow);
+        }
+        
+        /* Reader Panel (Right Side Panel) */
+        .reader-panel {
+            width: 0;
+            background-color: var(--bg-surface);
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 200;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .reader-panel.open {
+            width: 55vw;
+            position: relative;
+            border-left-width: 1px;
+        }
+        
+        .reader-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-card);
+        }
+        
+        .reader-header-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            max-width: 80%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        .reader-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .reader-close:hover {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+        }
+        
+        .reader-tabs {
+            display: flex;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 16px;
+        }
+        
+        .reader-tab {
+            padding: 14px 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .reader-tab:hover, .reader-tab.active {
+            color: var(--text-primary);
+        }
+        
+        .reader-tab.active {
+            border-bottom-color: var(--primary);
+        }
+        
+        .reader-content {
+            flex-grow: 1;
+            padding: 36px;
+            overflow-y: auto;
+            background-color: var(--bg-surface);
+            line-height: 1.7;
+        }
+        
+        /* Markdown Render Styling */
+        .markdown-body {
+            color: var(--text-primary);
+            font-size: 0.98rem;
+        }
+        
+        .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+            margin-top: 28px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .markdown-body h1 { font-size: 1.6rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        .markdown-body h2 { font-size: 1.3rem; border-bottom: 1px solid var(--border-color); padding-bottom: 6px; }
+        .markdown-body h3 { font-size: 1.15rem; }
+        
+        .markdown-body p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        
+        .markdown-body hr {
+            height: 1px;
+            background-color: var(--border-color);
+            border: none;
+            margin: 24px 0;
+        }
+        
+        .markdown-body ul, .markdown-body ol {
+            padding-left: 24px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+        
+        .markdown-body li {
+            margin-bottom: 8px;
+        }
+        
+        .markdown-body pre {
+            background-color: var(--bg-base);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            overflow-x: auto;
+            margin-bottom: 16px;
+        }
+        
+        .markdown-body code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 0.9rem;
+            background-color: var(--bg-base);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .markdown-body blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 16px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        
+        .markdown-body a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--primary);
+            transition: var(--transition);
+        }
+        
+        .markdown-body a:hover {
+            color: var(--primary-light);
+            border-bottom-style: solid;
+        }
+        
+        .markdown-body img {
+            max-width: 100%;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Timeline Log view */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 4px;
+            bottom: 4px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 2px solid var(--bg-base);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .timeline-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .timeline-action {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+        }
+        
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Grid of entities/concepts */
+        .grid-entities {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .entity-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .entity-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .entity-stats {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .entity-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* Loading Skeletons */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-card) 25%, var(--border-color) 50%, var(--bg-card) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Profile focus layout styles */
+        .profile-layout {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .profile-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            border: 4px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
+            background-color: var(--bg-base);
+            transition: var(--transition);
+        }
+        
+        .stat-card:hover .profile-photo, .search-filter-card:hover .profile-photo {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .profile-info {
+            flex-grow: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-layout {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .profile-photo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CORS Warning Banner -->
+    <div id="cors-banner">
+        <span>⚠️ <strong>CORS Policy Restriction:</strong> This webpage is opened directly from your file system (<code>file:///</code>). Browsers block fetching local database files due to security policies.</span>
+        <button onclick="startLocalServerInstructions()">Learn How to Run a Server</button>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-logo-container">
+                <img src="assets/Logo_JJD.png" alt="JJD Logo" class="sidebar-brand-logo">
+            </div>
+            <div class="sidebar-brand-title">
+                <img src="assets/Wordlogo_JJD_transparente.png" alt="Juan J. Díaz-Mochón" style="max-height: 38px; width: auto; max-width: 140px; object-fit: contain; filter: var(--logo-filter); transition: var(--transition);">
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item active" onclick="switchTab('dashboard')">
+                <i data-lucide="layout-dashboard"></i> Dashboard
+            </div>
+            <div class="menu-item" onclick="switchTab('publications')">
+                <i data-lucide="book-open"></i> Publications
+            </div>
+            <div class="menu-item" onclick="switchTab('patents')">
+                <i data-lucide="award"></i> Patents
+            </div>
+            <div class="menu-item" onclick="switchTab('theses')">
+                <i data-lucide="graduation-cap"></i> Doctoral Theses
+            </div>
+            <div class="menu-item" onclick="switchTab('ontology')">
+                <i data-lucide="network"></i> Ontology / Concepts
+            </div>
+            <div class="menu-item" onclick="switchTab('log')">
+                <i data-lucide="history"></i> Ingestion Log
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" onclick="toggleTheme()">
+                <i data-lucide="moon" id="theme-toggle-icon"></i>
+                <span id="theme-toggle-text">Dark Mode</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        
+        <!-- Content Area -->
+        <div class="content-area" id="main-content">
+            <!-- Dynamically Loaded Sections Go Here -->
+        </div>
+        
+        <!-- Reader Panel -->
+        <div class="reader-panel" id="reader">
+            <div class="reader-header">
+                <div class="reader-header-title" id="reader-title">Document Title</div>
+                <button class="reader-close" onclick="closeReader()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            
+            <div class="reader-tabs">
+                <div class="reader-tab active" id="tab-summary" onclick="switchReaderTab('summary')">📄 Summary</div>
+                <div class="reader-tab" id="tab-full" onclick="switchReaderTab('full')">🔗 Full Text</div>
+            </div>
+            
+            <div class="reader-content markdown-body" id="reader-body">
+                <!-- Converted Markdown HTML -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Zero-CORS Data Bundle -->
+    <script src="wiki_data.js"></script>
+
+    <script>
+        // Global State
+        let wikiData = null;
+        let activeTab = 'dashboard';
+        let currentLoadedItem = null;
+        let readerActiveSubTab = 'summary'; // 'summary' or 'full'
+        let currentLoadedPath = '';
+
+        // Check if opened via file:// protocol without embedded data
+        if (window.location.protocol === 'file:' && !window.WIKI_DATA) {
+            document.getElementById('cors-banner').style.display = 'flex';
+        }
+
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Load Data
+        async function loadData() {
+            const contentDiv = document.getElementById('main-content');
+            renderSkeleton(contentDiv);
+            
+            if (window.WIKI_DATA) {
+                wikiData = window.WIKI_DATA;
+                if (document.getElementById('cors-banner')) {
+                    document.getElementById('cors-banner').style.display = 'none';
+                }
+                renderDashboard();
+                return;
+            }
+            
+            try {
+                const response = await fetch('wiki/wiki_data.json');
+                wikiData = await response.json();
+                renderDashboard();
+            } catch (err) {
+                console.error("Failed to load data:", err);
+                contentDiv.innerHTML = `
+                    <div style="padding:40px; text-align:center; color:var(--danger)">
+                        <i data-lucide="alert-triangle" style="width:48px; height:48px; margin-bottom:16px"></i>
+                        <h2>Failed to Load Wiki Database</h2>
+                        <p style="margin-top:8px; color:var(--text-secondary)">
+                            Make sure you run <code>compile_wiki.py</code> or start a local web server.
+                        </p>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+        
+        loadData();
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-theme');
+            const isDark = body.classList.contains('dark-theme');
+            
+            document.getElementById('theme-toggle-icon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+            document.getElementById('theme-toggle-text').innerText = isDark ? 'Light Mode' : 'Dark Mode';
+            lucide.createIcons();
+        }
+
+        // Switch Navigation Tab
+        function switchTab(tabId) {
+            activeTab = tabId;
+            
+            // Update menu selection
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => item.classList.remove('active'));
+            
+            // Find active menu item
+            const triggerIdx = {
+                'dashboard': 0, 'publications': 1, 'patents': 2, 'theses': 3, 'ontology': 4, 'log': 5
+            }[tabId];
+            menuItems[triggerIdx].classList.add('active');
+            
+            // Close reader when switching main tab
+            closeReader();
+            
+            // Render view
+            if (tabId === 'dashboard') renderDashboard();
+            else if (tabId === 'publications') renderPublications();
+            else if (tabId === 'patents') renderPatents();
+            else if (tabId === 'theses') renderTheses();
+            else if (tabId === 'ontology') renderOntology();
+            else if (tabId === 'log') renderLog();
+        }
+
+        // Skeletons
+        function renderSkeleton(container) {
+            container.innerHTML = `
+                <div style="display:flex; flex-direction:column; gap:20px; width:100%">
+                    <div class="skeleton" style="height:40px; width:40%; margin-bottom:16px"></div>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:20px">
+                        <div class="skeleton" style="height:120px; border-radius:12px"></div>
+                        <div class="skeleton" style="height:120px; border-radius:12px"></div>
+                        <div class="skeleton" style="height:120px; border-radius:12px"></div>
+                        <div class="skeleton" style="height:120px; border-radius:12px"></div>
+                    </div>
+                    <div class="skeleton" style="height:200px; border-radius:12px; margin-top:20px"></div>
+                </div>
+            `;
+        }
+
+        // View Renderers
+        function renderDashboard() {
+            const content = document.getElementById('main-content');
+            
+            // Calculate total papers count
+            const totalArticles = wikiData.articles.length;
+            const totalPatents = wikiData.patents.length;
+            const totalTheses = wikiData.theses.length;
+            const totalConcepts = wikiData.concepts.chemistry.length + wikiData.concepts.platforms.length + wikiData.concepts.clinical_areas.length;
+            const totalEntities = wikiData.entities.researchers.length + wikiData.entities.institutions.length + wikiData.entities.projects.length;
+            
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Juan José Díaz-Mochón LLM Wiki</h1>
+                    <div class="dashboard-subtitle">Knowledge discovery hub and publication indexing interface.</div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card" onclick="switchTab('publications')">
+                        <div class="stat-label">Publications</div>
+                        <div class="stat-value">${totalArticles}</div>
+                        <div class="stat-icon"><i data-lucide="book-open"></i></div>
+                    </div>
+                    <div class="stat-card" onclick="switchTab('patents')">
+                        <div class="stat-label">Patents</div>
+                        <div class="stat-value">${totalPatents}</div>
+                        <div class="stat-icon"><i data-lucide="award"></i></div>
+                    </div>
+                    <div class="stat-card" onclick="switchTab('theses')">
+                        <div class="stat-label">Doctoral Theses</div>
+                        <div class="stat-value">${totalTheses}</div>
+                        <div class="stat-icon"><i data-lucide="graduation-cap"></i></div>
+                    </div>
+                    <div class="stat-card" onclick="switchTab('ontology')">
+                        <div class="stat-label">Core Concepts</div>
+                        <div class="stat-value">${totalConcepts}</div>
+                        <div class="stat-icon"><i data-lucide="network"></i></div>
+                    </div>
+                </div>
+                
+                <div class="search-filter-card">
+                    <div class="profile-layout">
+                        <img src="assets/foto_mochon.jpg" alt="Prof. Juan José Díaz-Mochón" class="profile-photo">
+                        <div class="profile-info">
+                            <h3 style="font-size:1.3rem">🔬 Core Scientific Focus</h3>
+                            <p style="color:var(--text-secondary); line-height:1.6; margin-top:8px">
+                                <strong>Professor Juan José Díaz-Mochón</strong> leads research at the interface of organic chemistry, chemical biology, and nanotechnology. 
+                                His publications focus on <strong>dynamic chemical labeling</strong>, <strong>CRISPR-Cas13 diagnostic platforms</strong>, 
+                                and abasic Peptide Nucleic Acid (PNA) probes for DNA/RNA analysis.
+                            </p>
+                            <div style="display:flex; gap:10px; margin-top:16px; flex-wrap:wrap">
+                                <button class="btn-action" onclick="switchTab('publications')" style="background-color:var(--primary); color:white; border:none">
+                                    Browse Publications <i data-lucide="arrow-right"></i>
+                                </button>
+                                <button class="btn-action" onclick="switchTab('ontology')">Explore Concept Graph</button>
+                                <a href="https://www.webofscience.com/wos/author/record/A-4297-2009" target="_blank" class="btn-action" style="text-decoration:none">
+                                    <i data-lucide="external-link"></i> Researcher Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display:grid; grid-template-columns: 2fr 1fr; gap:20px">
+                    <div class="search-filter-card">
+                        <h4 style="font-size:1.15rem">📅 Timeline Overview</h4>
+                        <div style="display:flex; align-items:flex-end; gap:8px; height:200px; padding:10px 0; border-bottom:1px solid var(--border-color); margin-top:16px">
+                            <!-- Draw simple chart -->
+                            ${getYearChartHTML()}
+                        </div>
+                    </div>
+                    
+                    <div class="search-filter-card">
+                        <h4 style="font-size:1.15rem">👥 Key Researchers</h4>
+                        <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px">
+                            ${wikiData.entities.researchers.slice(0, 5).map(r => `
+                                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px">
+                                    <div>
+                                        <div style="font-weight:600; font-size:0.95rem">${r.name}</div>
+                                        <div style="font-size:0.8rem; color:var(--text-muted)">${r.stats}</div>
+                                    </div>
+                                    <i data-lucide="chevron-right" style="color:var(--text-muted); cursor:pointer" onclick="openEntity('${r.link}')"></i>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+        
+        function getYearChartHTML() {
+            // Group articles by year
+            const counts = {};
+            wikiData.articles.forEach(a => {
+                counts[a.year] = (counts[a.year] || 0) + 1;
+            });
+            const years = Object.keys(counts).sort();
+            const maxVal = Math.max(...Object.values(counts));
+            
+            return years.map(y => {
+                const height = (counts[y] / maxVal) * 160;
+                return `
+                    <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px">
+                        <div style="font-size:0.75rem; font-weight:700; color:var(--primary-light)">${counts[y]}</div>
+                        <div style="height:${height}px; width:100%; max-width:24px; background:linear-gradient(180deg, var(--primary), var(--secondary)); border-radius:4px 4px 0 0" title="${counts[y]} articles in ${y}"></div>
+                        <div style="font-size:0.75rem; color:var(--text-secondary); font-weight:600">${y}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render Publications (Articles)
+        function renderPublications() {
+            const content = document.getElementById('main-content');
+            
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Scientific Articles</h1>
+                    <div class="dashboard-subtitle">Direct, searchable access to articles database.</div>
+                </div>
+                
+                <div class="search-filter-card">
+                    <div class="search-box-container">
+                        <i data-lucide="search" class="search-icon-inside"></i>
+                        <input type="text" id="pub-search" class="search-input" placeholder="Search by title, authors, keywords..." oninput="filterPublications()">
+                    </div>
+                    <div class="filter-options" id="year-filters">
+                        <span style="font-size:0.9rem; color:var(--text-secondary); font-weight:600; margin-right:8px">Filter by Year:</span>
+                        <div class="filter-chip active" onclick="toggleYearFilter('all', this)">All Years</div>
+                        ${getUniqueYearsHTML()}
+                    </div>
+                </div>
+                
+                <div class="items-list" id="pub-list-container">
+                    ${getPublicationsListHTML(wikiData.articles)}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+        
+        let selectedYearFilter = 'all';
+        function toggleYearFilter(year, element) {
+            selectedYearFilter = year;
+            const chips = document.querySelectorAll('#year-filters .filter-chip');
+            chips.forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+            filterPublications();
+        }
+        
+        function getUniqueYearsHTML() {
+            const years = [...new Set(wikiData.articles.map(a => a.year))].sort((a,b) => b-a);
+            return years.map(y => `<div class="filter-chip" onclick="toggleYearFilter(${y}, this)">${y}</div>`).join('');
+        }
+        
+        function getPublicationsListHTML(list) {
+            if (list.length === 0) {
+                return `<div style="text-align:center; color:var(--text-muted); padding:32px">No publications found matching the query.</div>`;
+            }
+            return list.map(item => `
+                <div class="item-card" onclick="openDocument('${item.title}', '${item.summary_link}', '${item.full_text_link}')">
+                    <div class="item-main">
+                        <div class="item-title">${item.title}</div>
+                        <div class="item-authors">${item.authors}</div>
+                        <div class="item-metadata">
+                            <span class="badge badge-article">Article</span>
+                            <span class="item-year"><i data-lucide="calendar" style="width:14px; height:14px"></i> ${item.year}</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-action"><i data-lucide="file-text"></i> Summary</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filterPublications() {
+            const q = document.getElementById('pub-search').value.toLowerCase();
+            const list = wikiData.articles.filter(a => {
+                const matchesQ = a.title.toLowerCase().includes(q) || a.authors.toLowerCase().includes(q);
+                const matchesYear = selectedYearFilter === 'all' || a.year === parseInt(selectedYearFilter);
+                return matchesQ && matchesYear;
+            });
+            document.getElementById('pub-list-container').innerHTML = getPublicationsListHTML(list);
+            lucide.createIcons();
+        }
+
+        // Render Patents
+        function renderPatents() {
+            const content = document.getElementById('main-content');
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Patents Portfolio</h1>
+                    <div class="dashboard-subtitle">Intellectual property and industrial translations.</div>
+                </div>
+                
+                <div class="search-filter-card">
+                    <div class="search-box-container">
+                        <i data-lucide="search" class="search-icon-inside"></i>
+                        <input type="text" id="pat-search" class="search-input" placeholder="Search by title, number, code..." oninput="filterPatents()">
+                    </div>
+                </div>
+                
+                <div class="items-list" id="pat-list-container">
+                    ${getPatentsListHTML(wikiData.patents)}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+        
+        function getPatentsListHTML(list) {
+            if (list.length === 0) return `<div style="text-align:center; color:var(--text-muted); padding:32px">No patents found.</div>`;
+            return list.map(item => `
+                <div class="item-card" onclick="openDocument('${item.title}', '${item.summary_link}', '${item.full_text_link}')">
+                    <div class="item-main">
+                        <div class="item-title">${item.title}</div>
+                        <div style="font-size:0.9rem; font-weight:600; color:var(--secondary); margin-top:2px">
+                            Numbers: ${item.publication_number}
+                        </div>
+                        <div class="item-metadata">
+                            <span class="badge badge-patent">Patent</span>
+                            <span class="item-year"><i data-lucide="calendar" style="width:14px; height:14px"></i> Priority: ${item.priority_date}</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn-action"><i data-lucide="file-text"></i> Summary</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filterPatents() {
+            const q = document.getElementById('pat-search').value.toLowerCase();
+            const list = wikiData.patents.filter(p => p.title.toLowerCase().includes(q) || p.publication_number.toLowerCase().includes(q));
+            document.getElementById('pat-list-container').innerHTML = getPatentsListHTML(list);
+            lucide.createIcons();
+        }
+
+        // Render Doctoral Theses
+        function renderTheses() {
+            const content = document.getElementById('main-content');
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Doctoral Theses</h1>
+                    <div class="dashboard-subtitle">Doctoral theses supervised or co-supervised by JJD.</div>
+                </div>
+                
+                <div class="items-list">
+                    ${wikiData.theses.map(item => `
+                        <div class="item-card" onclick="openDocument('${item.title}', '${item.summary_link}', '${item.full_text_link}')">
+                            <div class="item-main">
+                                <div class="item-title" style="font-size:1.15rem">${item.title}</div>
+                                <div style="font-size:0.9rem; color:var(--text-secondary); margin-top:4px">
+                                    <strong>University:</strong> ${item.university} | <strong>Advisors:</strong> ${item.advisors}
+                                </div>
+                                <div class="item-metadata">
+                                    <span class="badge badge-thesis">Thesis</span>
+                                    <span class="item-year"><i data-lucide="calendar" style="width:14px; height:14px"></i> Year: ${item.year}</span>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="btn-action"><i data-lucide="file-text"></i> Summary</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Render Ontology & Concepts
+        function renderOntology() {
+            const content = document.getElementById('main-content');
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Concept & Entity Ontology</h1>
+                    <div class="dashboard-subtitle">Semantic mapping of researcher relationships and scientific targets.</div>
+                </div>
+                
+                <h2 style="font-size:1.4rem; border-bottom:1px solid var(--border-color); padding-bottom:8px">⚗️ Key Concepts</h2>
+                
+                <h3 style="font-size:1.1rem; color:var(--primary-light); margin-top:8px">Chemistry Concepts</h3>
+                <div class="grid-entities">
+                    ${wikiData.concepts.chemistry.map(c => `
+                        <div class="entity-card" onclick="openEntity('${c.link}')">
+                            <div class="entity-title">${c.name}</div>
+                            <div class="entity-stats">${c.stats}</div>
+                            <div class="entity-desc">${c.description}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <h3 style="font-size:1.1rem; color:var(--secondary); margin-top:24px">Hardware & Diagnostic Platforms</h3>
+                <div class="grid-entities">
+                    ${wikiData.concepts.platforms.map(c => `
+                        <div class="entity-card" onclick="openEntity('${c.link}')">
+                            <div class="entity-title">${c.name}</div>
+                            <div class="entity-stats">${c.stats}</div>
+                            <div class="entity-desc">${c.description}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <h2 style="font-size:1.4rem; border-bottom:1px solid var(--border-color); padding-bottom:8px; margin-top:40px">👥 Entities Catalog</h2>
+                <div class="grid-entities">
+                    ${wikiData.entities.researchers.map(r => `
+                        <div class="entity-card" onclick="openEntity('${r.link}')">
+                            <div class="entity-title">${r.name}</div>
+                            <div class="entity-stats">${r.stats}</div>
+                            <div class="entity-desc">${r.description}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Render Ingestion Log
+        async function renderLog() {
+            const content = document.getElementById('main-content');
+            renderSkeleton(content);
+            
+            try {
+                const response = await fetch('wiki/log.md');
+                const mdText = await response.text();
+                
+                // Parse log.md simple timeline
+                const entries = [];
+                // Find all ## [Date] Title
+                const regex = /##\s+\[(.*?)\]\s+(.*?)\n(.*?)(?=##\s+\[|$)/gs;
+                let match;
+                while ((match = regex.exec(mdText)) !== null) {
+                    const date = match[1];
+                    const rawTitle = match[2];
+                    const rawDetails = match[3].strip ? match[3].strip() : match[3];
+                    
+                    // Separate Action from Title
+                    const parts = rawTitle.split('|');
+                    const action = parts[0] ? parts[0].strip ? parts[0].strip() : parts[0] : 'Modify';
+                    const title = parts[1] ? parts[1].strip ? parts[1].strip() : parts[1] : rawTitle;
+                    
+                    entries.push({ date, action, title, details: rawDetails });
+                }
+                
+                content.innerHTML = `
+                    <div class="dashboard-header">
+                        <h1 class="dashboard-title">Ingestion & Health Log</h1>
+                        <div class="dashboard-subtitle">Audit timeline tracking file pipeline additions.</div>
+                    </div>
+                    
+                    <div class="timeline">
+                        ${entries.map(e => `
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <div class="timeline-header">
+                                        <div class="timeline-date">${e.date}</div>
+                                        <div class="timeline-action">${e.action}</div>
+                                    </div>
+                                    <div class="timeline-title">${e.title}</div>
+                                    <div class="timeline-desc">${marked.parse(e.details)}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                lucide.createIcons();
+            } catch (err) {
+                console.error(err);
+                content.innerHTML = `<div style="color:var(--danger)">Failed to load log.md</div>`;
+            }
+        }
+
+        // Document Reader logic
+        async function openDocument(title, summaryLink, fullTextLink) {
+            currentLoadedItem = { title, summaryLink, fullTextLink };
+            readerActiveSubTab = 'summary';
+            
+            document.getElementById('reader-title').innerText = title;
+            document.getElementById('tab-summary').classList.add('active');
+            document.getElementById('tab-full').classList.remove('active');
+            
+            // Toggle visibility of full text tab depending on if fullTextLink is provided
+            const tabFull = document.getElementById('tab-full');
+            if (fullTextLink && fullTextLink !== 'null' && fullTextLink !== 'undefined') {
+                tabFull.style.display = 'block';
+            } else {
+                tabFull.style.display = 'none';
+            }
+            
+            document.getElementById('reader').classList.add('open');
+            loadReaderContent(summaryLink);
+        }
+        
+        async function loadReaderContent(relativeLink) {
+            const body = document.getElementById('reader-body');
+            body.innerHTML = `<div class="skeleton" style="height:300px; border-radius:12px"></div>`;
+            
+            currentLoadedPath = 'wiki/' + relativeLink;
+            
+            try {
+                const response = await fetch(currentLoadedPath);
+                if (!response.ok) throw new Error("File not found");
+                const text = await response.text();
+                
+                // Parse markdown and strip frontmatter (the starting --- block)
+                let cleanText = text;
+                if (text.startsWith('---')) {
+                    const match = text.indexOf('---', 3);
+                    if (match !== -1) {
+                        cleanText = text.substring(match + 3).trim();
+                    }
+                }
+                
+                body.innerHTML = marked.parse(cleanText);
+                
+                // Hack: Lucide icons render
+                lucide.createIcons();
+            } catch (err) {
+                body.innerHTML = `<div style="color:var(--danger); padding:20px; text-align:center">Error loading summary file.</div>`;
+            }
+        }
+        
+        function switchReaderTab(subTab) {
+            if (!currentLoadedItem) return;
+            readerActiveSubTab = subTab;
+            
+            document.getElementById('tab-summary').classList.remove('active');
+            document.getElementById('tab-full').classList.remove('active');
+            
+            if (subTab === 'summary') {
+                document.getElementById('tab-summary').classList.add('active');
+                loadReaderContent(currentLoadedItem.summaryLink);
+            } else {
+                document.getElementById('tab-full').classList.add('active');
+                loadReaderContent(currentLoadedItem.fullTextLink);
+            }
+        }
+
+        // Open custom Entity or Concept page
+        async function openEntity(relativeLink) {
+            // e.g. entities/people/Agustin_Robles_Remacho.md
+            // or concepts/chemistry/Abasic_Probes.md
+            document.getElementById('reader-title').innerText = relativeLink.split('/').pop().replace('.md', '').replace(/_/g, ' ');
+            document.getElementById('tab-summary').classList.add('active');
+            document.getElementById('tab-full').style.display = 'none'; // no full text tab for entities
+            
+            document.getElementById('reader').classList.add('open');
+            loadReaderContent(relativeLink);
+        }
+
+        function closeReader() {
+            document.getElementById('reader').classList.remove('open');
+            currentLoadedItem = null;
+        }
+
+        // Resolves relative paths dynamically
+        function resolvePath(currentFilePath, relativeLink) {
+            if (relativeLink.startsWith('http://') || relativeLink.startsWith('https://') || relativeLink.startsWith('mailto:')) {
+                return relativeLink;
+            }
+            
+            // Remove ../../ and resolve relative to JJD-LLM-Wiki
+            // Since our links inside markdown are relative to output directories, they start with '../../'
+            // Resolving from currentFilePath:
+            // e.g. currentFilePath = "wiki/outputs/summaries_papers/Summary_of_X.md"
+            // relativeLink = "../../concepts/platforms/CRISPR_Cas13.md"
+            // We strip '../../' and replace it with 'wiki/'
+            let resolved = relativeLink;
+            if (relativeLink.startsWith('../../')) {
+                resolved = 'wiki/' + relativeLink.substring(6);
+            } else if (relativeLink.startsWith('../')) {
+                // Handle single parent dir relative
+                resolved = 'wiki/' + relativeLink.substring(3);
+            } else if (!relativeLink.startsWith('wiki/')) {
+                // If it is inside the wiki dir but doesn't have parents prefix
+                resolved = 'wiki/' + relativeLink;
+            }
+            return resolved;
+        }
+
+        // Intercept rendered markdown link clicks for SPA feel
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('#reader-body a');
+            if (link) {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('mailto') && !href.startsWith('#')) {
+                    e.preventDefault();
+                    // Resolve and load internal file
+                    const resolvedPath = resolvePath(currentLoadedPath, href);
+                    console.log("Navigating dynamically to:", resolvedPath);
+                    
+                    // Extract name for title
+                    const title = href.split('/').pop().replace('.md', '').replace(/_/g, ' ');
+                    document.getElementById('reader-title').innerText = title;
+                    
+                    // Load the content!
+                    // Strip the 'wiki/' prefix since loadReaderContent appends it
+                    let cleanRelativePath = resolvedPath;
+                    if (resolvedPath.startsWith('wiki/')) {
+                        cleanRelativePath = resolvedPath.substring(5);
+                    }
+                    
+                    loadReaderContent(cleanRelativePath);
+                }
+            }
+        });
+
+        // Instructions Modal/Alert for local server
+        function startLocalServerInstructions() {
+            alert(`How to Run a Local Web Server to bypass browser CORS policy:
+
+1. Open a terminal or PowerShell.
+2. Navigate to this directory (where index.html is located):
+   cd "k:\\Mi unidad\\Developer UGR\\Catedra\\JJD-LLM-Wiki"
+3. Run the Python built-in server command:
+   python -m http.server 8000
+4. Open your browser and navigate to:
+   http://localhost:8000
+   
+This will allow index.html to fetch and render the entire wiki dynamically!`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿# OS generated files
+desktop.ini
+**/desktop.ini
+Thumbs.db
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.venv/
+venv/
+
+# Backup & logs
+*.tmp
+*.log
+.git_old/
+**/.git_old/
+
+# Obsidian workspace state
+.obsidian/workspace*
+.obsidian/cache

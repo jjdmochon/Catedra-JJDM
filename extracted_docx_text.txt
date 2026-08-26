@@ -1,0 +1,106 @@
+ERC Advanced Grant Research Proposal (Part B1 & B2 Blueprint)
+Acronym: eRNA-DEGRADE
+Full Title: Precision Epigenomic Interruption of Chronic Inflammation via Machine Learning-Guided RiboTAC Degraders Targeting Super-Enhancer eRNAs Regulating TNF-alpha
+Primary Panel: LS6 (Immunity, Infection and Immunotherapy)
+Secondary Panel: LS2 (Integrative Biology, Structural Biology and Molecular Genetics)
+Grant Category: ERC Advanced Grant (5-Year Horizon, €2,500,000 Budget)
+1. Executive Summary & Concept Statement
+Chronic inflammatory disorders—including Rheumatoid Arthritis (RA), Psoriasis, Inflammatory Bowel Disease (IBD), and acute systemic sepsis—represent a formidable health and economic burden globally. Although biological therapeutics sequestering Tumor Necrosis Factor-alpha (TNF-alpha) protein (e.g., infliximab, adalimumab) have reshaped clinical care, up to 40% of patients experience primary non-responsiveness, secondary loss of efficacy due to anti-drug antibody generation, or severe systemic immunosuppressive side effects. Meanwhile, small-molecule inhibitors targeting downstream kinase cascades (e.g., JAK/STAT pathways) frequently suffer from narrow therapeutic windows and multi-organ off-target toxicities.
+eRNA-DEGRADE introduces a paradigm-shifting therapeutic strategy: targeting the non-coding regulome upstream of cytokine gene expression. Emerging evidence demonstrates that hyper-expression of TNF-alpha during acute and chronic inflammation is driven by specific super-enhancers (SEs) transcribing non-coding enhancer RNAs (eRNAs)—specifically human DHS44500 and its murine functional homolog, TNF-9. These short-lived eRNAs function as non-redundant structural scaffolds that anchor transcription factor assemblies, histone acetyltransferase coactivators (p300/CBP), RNA Polymerase II recruitment, and three-dimensional Enhancer-Promoter (E-P) chromatin loops.
+Rather than attempting to neutralize circulating TNF-alpha protein after its synthesis and systemic release, eRNA-DEGRADE will design first-in-class Ribonuclease-Targeting Chimeras (RiboTACs) and synthetic RNA-binding small molecules to catalyze selective degradation of TNF-alpha super-enhancer eRNAs. By directing endogenous RNase L specifically to DHS44500 eRNA tertiary structural motifs, this approach will dismantle the super-enhancer biomolecular condensate, trigger regional E-P chromatin loop collapse, and silence pathologically elevated TNF-alpha gene transcription at its genomic origin in disease-associated macrophages and primary patient immune cells, without causing generalized immunosuppression.
+2. Statement of Innovation & Paradigm Shift
+2.1 Disruptive Conceptual Breakthrough
+Standard pharmacological paradigms target catalytic active sites or ligand-binding pockets on proteins. eRNA-DEGRADE shifts the intervention node upstream to non-coding RNA scaffolds that orchestrate nuclear gene transcription:
+Epigenomic Condensate Dissolution: Rather than inhibiting individual protein-protein contacts, RiboTAC-mediated destruction of DHS44500 eRNA dismantles the phase-separated super-enhancer condensate, terminating transcription factor re-loading before pre-mRNA synthesis can occur.
+Cell-State Selectivity: Unlike ubiquitously expressed signaling proteins or housekeeping transcripts, eRNAs are transcribed exclusively in specific disease-activated cell states (e.g., LPS/TLR4-stimulated inflammatory macrophages). RiboTACs targeting eRNAs achieve cell-state specificity unapproachable by classic small-molecule kinase inhibitors.
+Catalytic Sub-Stoichiometric Mechanism: RiboTACs operate catalytically; a single degrader molecule can induce the sequential cleavage of multiple target eRNA transcripts, overcoming the stoichiometric limitations of occupancy-based small-molecule antagonists.
+2.2 Technological & Methodological Innovation
+eRNA-DEGRADE integrates several emerging frontiers into a cohesive drug discovery platform:
+AI/ML RNA Scaffold Engineering: Deployment of 2.5D/3D RNA structural predictions, deep-learning docking pipelines, and scaffold-aware generative models trained specifically on RNA-small molecule binding landscapes.
+DEL Screening against Dynamic Non-Coding RNA: Application of DNA-Encoded Libraries (>10^8 diverse chemical entities) to screen natively folded eRNA hairpins under competitive physiological conditions.
+Single-Cell Off-Target Profiling via drug2cell: Adaptation of single-cell multi-omic frameworks to map eRNA target availability across millions of human single-cell transcriptomes, creating a computational safety screen before animal studies.
+Epigenomic Architecture Tracking: Direct measurement of 3D chromatin loop decay using high-resolution Micro-C, single-nucleus snm3C-seq, and nascent transcription tracking via PRO-seq.
+2.3 Intellectual Property Strategy & Translational Roadmap
+This proposal establishes a structured pipeline for intellectual property (IP) protection and clinical translation:
+Patent Portfolio Generation: IP filings will encompass (a) composition-of-matter claims for synthetic RiboTAC structures targeting DHS44500, (b) diagnostic method patents utilizing DHS44500 eRNA expression as a stratification biomarker, and (c) platform claims for machine learning-guided eRNA degrader identification.
+Commercialization & Spin-Off Trajectory: Project milestones are aligned to support an ERC Proof of Concept (PoC) grant application and the establishment of a biotechnology spin-off focused on regulome-targeted therapeutics for autoimmune and inflammatory diseases.
+3. Groundbreaking Nature, State-of-the-Art & Key Scientific Questions
+3.1 Beyond State-of-the-Art
+3.2 Key Scientific Questions
+Can heterobifunctional small molecules selectively differentiate secondary and tertiary structures of low-abundance, short-lived eRNAs from abundant cellular RNAs?
+Does catalytic degradation of DHS44500 eRNA induce rapid structural collapse of local 3D chromatin architecture (E-P loops) and displace p300/BRD4 coactivator complexes?
+Can single-cell multi-omic frameworks (drug2cell) accurately predict on-target cell-state specificity and off-target safety across primary human cell lineages?
+4. Work Packages and Research Methodology
+Work Package 1: Structural Architecture & Dynamics of DHS44500 / TNF-9 eRNAs
+Lead Focus: High-resolution structural characterization of human DHS44500 eRNA and mouse TNF-9 eRNA.
+1.1 RNA Structure Mapping: Perform SHAPE-MaP (Selective 2'-Hydroxyl Acylation analyzed by Primer Extension and Mutational Profiling) and dMS-MaPseq on in vitro-transcribed and endogenously isolated DHS44500 eRNA under physiological ionic conditions. Resolve stable secondary motifs (hairpin loops, internal bulges, triple-helix nodes).
+1.2 High-Resolution Structural Determination: Subject structured sub-domains to NMR Spectroscopy and single-particle Cryo-EM to capture dynamic 3D tertiary conformations.
+1.3 Molecular Dynamics (MD) Simulations: Utilize ensemble-based MD simulations (using AMBER/GROMACS with RNA-specific force fields) to model structural flexibility, binding pocket exposure, and hydration shells.
+Work Package 2: AI/ML-Guided Design, DEL Screening, and RiboTAC Chemical Synthesis
+Lead Focus: Ligand discovery and synthetic chemistry of catalytic heterobifunctional RNA degraders.
+2.1 Machine Learning & Computational Docking: Deploy deep learning models (e.g., Ribosphere, RNAincoder, RNA language models, SMARTBind, GATRsite) to screen small-molecule libraries against 3D RNA motifs identified in WP1. Predict binding free energy, target selectivity over ribosomal/transfer RNAs, and drug-like properties (Bemis-Murcko scaffolds).
+2.2 DNA-Encoded Library (DEL) Selection: Construct and screen an RNA-focused DNA-Encoded Library (>10^8 diverse small molecules) against immobilized folded DHS44500 eRNA constructs under competitive conditions.
+2.3 RiboTAC Design & Medicinal Chemistry: Conjugate validated small-molecule eRNA binders to a synthetic RNase L recruiter (e.g., a low-molecular-weight 2'-5' oligoadenylate monomer mimic or heterocyclic recruiter) via systematic PEG or alkyl linker libraries. Optimize PK properties, cell permeability, and chemical stability.
+Work Package 3: Biophysical Validation and drug2cell Single-Cell Off-Target Profiling
+Lead Focus: Cell-free biophysical binding assays and single-cell resolution safety profiling.
+3.1 Biophysical Binding & Catalytic Cleavage Assays: Quantify binding kinetics (Kd, kon, koff) via Surface Plasmon Resonance (SPR) and MicroScale Thermophoresis (MST). Confirm target engagement in living cells via Chem-CLIP (Chemical Crosslinking and Isolation by Pull-down) and target RNA degradation kinetics via RT-qPCR and RNA-seq.
+3.2 Adaptation of the drug2cell Single-Cell Pipeline: Integrate scRNA-seq datasets from clinical cohorts of RA, psoriasis, and healthy controls. Substitute standard protein targets in the drug2cell pipeline with custom eRNA binding scores to map RiboTAC target expression across single-cell clusters.
+3.3 Safety Guardrail: Confirm zero expression of DHS44500/TNF-9 eRNA targets in non-immune cell populations (e.g., cardiac sinoatrial pacemaker cells, blood-brain barrier endothelial cells, renal podocytes) to ensure a high therapeutic index.
+Work Package 4: Deep Mechanistic Decoupling & In Vivo Preclinical Validation
+Lead Focus: Epigenomic impact evaluation, mouse model efficacy, and human primary immune cell translation.
+4.1 Epigenomic Condensate & Chromatin Architecture Profiling: Evaluate the collapse of enhancer-promoter (E-P) loops via high-resolution Micro-C and single-nucleus snm3C-seq. Track nascent transcriptional elongation and pausing dynamics at the TNF-alpha locus using PRO-seq. Visualize phase-separated super-enhancer condensate disruption (p300, BRD4, MED1) using super-resolution microscopy (STED/SIM).
+4.2 In Vivo Preclinical Efficacy in Mouse Models: Administer optimized TNF-9-targeting RiboTACs in established mouse models of chronic inflammation:
+Collagen-Induced Arthritis (CIA) (Rheumatoid arthritis model).
+Imiquimod-Induced Psoriasis.
+LPS-Induced Hyper-Inflammatory Sepsis.
+Benchmark therapeutic efficacy against anti-TNF antibody standard-of-care (e.g., clinical scoring, joint histology, systemic cytokine profiling via multiplex ELISA).
+4.3 Translational Validation in Patient-Derived PBMCs: Validate target eRNA depletion, TNF-alpha gene silencing, and suppression of downstream inflammatory mediators (IL-1beta, IL-6) in primary PBMCs and synovial fluid macrophages isolated from patients with active RA and psoriasis.
+5. Project Timeline, Work Package Schedule & Gantt Chart
+5.1 Project Implementation Matrix (Years 1 to 5 / Quarters Q1 to Q20)
+5.2 Key Milestones & Project Deliverables
+Milestone 1 (Month 12): Complete 3D structural fold determination of human DHS44500 and mouse TNF-9 eRNA secondary/tertiary hairpin loops via SHAPE-MaP and Cryo-EM.
+Milestone 2 (Month 24): Identify top 20 candidate eRNA-binding small-molecule scaffolds from AI/ML computational docking and DEL selection.
+Milestone 3 (Month 36): Synthesize and validate first-in-class eRNA RiboTAC degraders achieving nanomolar binding affinity (Kd < 50 nM) and targeted RNase L-dependent catalytic cleavage in cell-free assays.
+Milestone 4 (Month 48): Demonstrate selective eRNA depletion, chromatin loop collapse (via Micro-C), and TNF-alpha transcript silencing in inflammatory macrophages without off-target toxicity in single-cell drug2cell profiles.
+Milestone 5 (Month 60): Complete preclinical proof-of-concept in mouse models (CIA arthritis, psoriasis, sepsis) and patient-derived PBMCs, demonstrating anti-inflammatory efficacy equivalent or superior to anti-TNF mAbs without systemic immunosuppression.
+6. Risk Management & High-Risk / High-Gain Assessment
+High-Risk Factor 1: Transient eRNA Half-Life & Low Abundance
+Mitigation Strategy: RiboTACs act catalytically; one molecule degrades multiple eRNA transcripts. Targeted catalytic delivery destroys the structural scaffold before transcription re-initiates.
+High-Risk Factor 2: Dynamic Conformational Flexibility of Non-Coding RNA
+Mitigation Strategy: Ensemble structural determination (SHAPE-MaP + Cryo-EM + MD simulations). Screening targets structurally rigid tertiary hairpins and triple helices.
+High-Risk Factor 3: Off-Target Degradation of Endogenous Structured RNAs
+Mitigation Strategy: Multi-stage computational counter-screening against human transcriptome motifs. Perform custom drug2cell single-cell mapping across non-immune tissue cell types to ensure cell-type specific engagement.
+7. Feasibility, Key Resources & Methodological Synergy
+Proof-of-Concept Baseline: Deleting the TNF-9 enhancer region in mice (Tnf-9-/-) significantly reduces Tnf-alpha expression, mitigates arthritis, and protects against LPS-induced septic shock without systemic pathology.
+ASO Preclinical Validation: Knockdown of mouse TNF-9 eRNA and human DHS44500 eRNA using Antisense Oligonucleotides (ASOs) suppresses TNF-alpha expression, proving the causal regulatory dependency on the eRNA transcript.
+Chemical Feasibility: The RiboTAC strategy has been validated in human oncology models (e.g., MYC mRNA degrader, junctional lncRNA degraders), establishing clear synthetic pathways for recruiting endogenous RNase L via bifunctional small molecules.
+Single-Cell Safety: Combining single-cell genomics with drug2cell analytical pipelines enables precise spatial and cell-type toxicity screening prior to extensive animal studies.
+8. Budget Justification & Financial Explanation (ERC Advanced Grant)
+The requested total budget for eRNA-DEGRADE is €2,500,000 over a 5-year duration (60 months), representing the standard maximum allowance for an ERC Advanced Grant.
+8.1 Summary Budget Table
+Note: In accordance with Horizon Europe rules, Indirect Costs (Overheads) are calculated at a flat rate of 25% on eligible direct costs, excluding subcontracting and specific major equipment overhead exemptions.
+8.2 Category A: Personnel Costs & Staffing Plan (€1,300,000)
+Principal Investigator (PI) (30% Commitment across Years 1-5): €180,000 total. Scientific leadership, strategic supervision of RiboTAC design, multi-omic integration, financial administration, and stakeholder reporting.
+Postdoctoral Researcher 1 - RNA Structural Biology & Biophysics (100% FTE, Y1-Y3): €210,000 total. Responsible for SHAPE-MaP, Cryo-EM sample preparation, NMR analysis, and in vitro binder characterization (WP1/WP3).
+Postdoctoral Researcher 2 - Medicinal Chemistry & RiboTAC Synthesis (100% FTE, Y2-Y5): €280,000 total. Responsible for chemical synthesis of heterobifunctional degraders, linker optimization, and DEL hit expansion (WP2).
+Postdoctoral Researcher 3 - Single-Cell Genomics & Epigenomics (100% FTE, Y2-Y5): €280,000 total. Responsible for drug2cell pipeline execution, scRNA-seq, Micro-C, snm3C-seq, and PRO-seq data analysis (WP3/WP4).
+PhD Student 1 - Computational AI/ML & Molecular Dynamics (100% FTE, Y1-Y4): €180,000 total. Focused on deep-learning docking models, dynamic RNA force-field MD simulations, and virtual screening (WP1/WP2).
+Senior Research Technician - In Vivo Immunology & Animal Models (50% FTE, Y2-Y5): €170,000 total. Responsible for colony management, collagen-induced arthritis (CIA), psoriasis, and sepsis mouse models, tissue harvesting, and ELISA/flow cytometry readouts (WP4).
+8.3 Category B: Equipment & Infrastructure (€170,000)
+High-Performance GPU Computing Cluster (Year 1): €70,000. Acquisition of dedicated GPU nodes (NVIDIA H100/A100) for local deep learning inference, MD ensemble simulations, and single-cell multi-omic data processing.
+Surface Plasmon Resonance (SPR) Sensor Arrays & Fluidics Upgrade (Year 1): €50,000. Biosensor chips, microfluidic maintenance, and specialized high-throughput RNA binding plates.
+Automated Liquid Handling & Chemical Synthesis Equipment (Years 2-3): €50,000. Automated parallel synthesizer and purification columns for high-throughput RiboTAC linker library generation.
+8.4 Category C: Consumables & Reagents (€450,000)
+DNA-Encoded Library (DEL) Selection Kits & Reagents (WP2): €90,000. Custom RNA-directed DEL library access, selection matrices, and high-throughput sequencing of DEL tags.
+Synthetic Chemistry & Linker Reagents (WP2): €100,000. Chemical building blocks, heterobifunctional recruiters, RNase L ligand precursors, solvents, purification cartridges, and NMR/LC-MS analytical supplies.
+Single-Cell Multi-Omic & Genomics Reagents (WP3/WP4): €130,000. 10x Genomics scRNA-seq kits, Micro-C library preparation kits, snm3C-seq reagents, PRO-seq enzyme kits, and high-throughput Illumina sequencing flow cells.
+Animal Model Expenses & Veterinary Housing (WP4): €80,000. Purchase, breeding, housing, and veterinary care for mouse cohorts (CIA arthritis, IMQ psoriasis, LPS sepsis models), including histology and immunohistochemistry supplies.
+Primary Patient PBMC Sample Acquisition & Cell Culture (WP3/WP4): €50,000. Procurement of clinical PBMC/synovial fluid samples from RA and psoriasis cohorts, primary cell culture media, cytokines, and electroporation cartridges.
+8.5 Category D: Access to Large-Scale Facilities & High-Performance Computing (€100,000)
+Cryo-EM Facility Beamtime Access (WP1): €50,000. Single-particle Cryo-EM facility access (Titan Krios time) for 3D reconstruction of eRNA tertiary motifs.
+National Supercomputing Cloud Allocation (WP1/WP2): €30,000. Cloud-based CPU/GPU compute time for long-timescale MD simulations and transcriptome-wide ML counter-screening.
+Flow Cytometry & Super-Resolution Microscopy Core Fees (WP4): €20,000. Core facility access for STED/SIM super-resolution microscopy and multi-color FACS sorting.
+8.6 Category E: Travel, Dissemination, Open Access & Data Management (€80,000)
+International Scientific Conferences & Symposia: €40,000. Conference attendance for PI and lab team at international meetings (e.g., RNA Society, Keystone Symposia, European Congress of Rheumatology, AACR/ACS).
+Gold Open Access Publication Charges: €25,000. Publication fees in high-impact, fully open-access journals (e.g., Nature, Science, Cell Press) to fulfill ERC mandates.
+FAIR Data Management, IP Protection & Public Outreach: €15,000. Data repository hosting fees (FAIR compliance), initial patent filing administration, project website creation, and public outreach activities.
