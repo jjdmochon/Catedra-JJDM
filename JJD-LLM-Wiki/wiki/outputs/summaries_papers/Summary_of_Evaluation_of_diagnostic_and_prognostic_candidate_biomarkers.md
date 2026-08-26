@@ -1,11 +1,11 @@
 ---
-title: "Summary of: Evaluation of diagnostic and prognostic candidate biomarkers in drug-induced liver injury $\less$i$\greater$vs$\less$/i$\greater$. other forms of acute liver damage"
+title: "Summary of: Evaluation of diagnostic and prognostic candidate biomarkers in drug-induced liver injury *vs.* other forms of acute liver damage"
 authors: "Alejandro Cueto-Sá"
 year: 2023
 section: "Articles"
 ---
 
-# Summary of: Evaluation of diagnostic and prognostic candidate biomarkers in [drug-induced liver injury](../../concepts/clinical-areas/Hepatotoxicity.md) $\less$i$\greater$vs$\less$/i$\greater$. other forms of acute liver damage
+# Summary of: Evaluation of diagnostic and prognostic candidate biomarkers in [drug-induced liver injury](../../concepts/clinical-areas/Hepatotoxicity.md) *vs.* other forms of acute liver damage
 
 - **Authors:** Alejandro Cueto-Sá
 - **Journal/Citation:** *British Journal of Clinical Pharmacology, (2023)*

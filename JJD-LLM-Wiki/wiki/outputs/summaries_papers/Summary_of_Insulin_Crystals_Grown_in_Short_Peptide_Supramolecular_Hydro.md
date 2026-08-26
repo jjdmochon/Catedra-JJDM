@@ -8,7 +8,7 @@ section: "Articles"
 # Summary of: Insulin Crystals Grown in Short-Peptide Supramolecular [Hydrogels](../../concepts/chemistry/Hydrogels.md) Show Enhanced Thermal Stability and Slower Release Profile
 
 - **Authors:** Rafael Contreras-Montoya, Marí
-- **Journal/Citation:** *ACS Applied Materials \&amp$\mathsemicolon$ Interfaces, 13, pp. 11672--11682, (2021)*
+- **Journal/Citation:** *ACS Applied Materials & Interfaces, 13, pp. 11672--11682, (2021)*
 - **Year:** 2021
 - **DOI:** [https://doi.org/10.1021/acsami.1c00639](https://doi.org/10.1021/acsami.1c00639)
 

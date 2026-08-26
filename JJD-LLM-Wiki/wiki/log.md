@@ -57,3 +57,12 @@ Chronological ledger of wiki modifications, updates, and ingest operations.
 ## [2026-07-02] Ingest | New Document Ingestion (Collaboration Papers)
 - **Action:** Ingested 2 `Article`s (Aho et al. - 2020 and Wallin & Lönnberg - 2022).
 - **Details:** Converted PDF files to Markdown using MarkItDown, saved under `sources/papers_md/`, generated paper summaries under `outputs/summaries_papers/`, and updated catalog in `index.md`.
+
+## [2026-08-26] Ingest & Restructure | LLM Wiki Version 2 Upgrade
+- **Action:** Substantial upgrade of the LLM Wiki structure, ingesting new proposal and expanding academic-pedagogical sections.
+- **Details:** 
+  2. Created the Professor Profile (`profile/Professor_Profile.md`) and Research Overview (`profile/Research_Overview.md`) detailing the 6 I+D axes.
+  3. Added the Courses & Teaching section containing `courses/Overview.md` and pages for `QFUNO.md`, `QFDOS.md`, `QO_UGR.md`, and `TRANSMED.md`.
+  4. Added the Methods & Technologies section containing `methods/Methods_Overview.md` and pages for `Dynamic_Chemical_Labeling.md`, `SMART_Probes.md`, `RiboTAC_Degraders.md`, `DNA_Encoded_Libraries.md`, `drug2cell_Pipeline.md`, and `Micro_C_snm3C_seq.md`.
+  5. Added the Centralized Glossary (`concepts/Glossary.md`), Open Questions (`open-questions-opportunities/Open_Questions.md`), and Gaps checklist (`profile/Missing_Information.md`).
+  6. Inserted a V2 Navigation Hub at the top of `index.md`, resolved LaTeX compliance across all files, and recompiled the database successfully (99 articles, 16 patents, 11 theses, 80 grants).

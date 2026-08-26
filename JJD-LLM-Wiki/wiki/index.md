@@ -1,6 +1,17 @@
-# JJD Publications LLM Wiki
+# JJD Publications & Academic LLM Wiki (Version 2)
 
-Welcome to the LLM Wiki for Juan José Díaz-Mochón's publications and projects. This wiki catalogues all successfully converted publications with full summaries, abstracts, and embedded figures.
+Welcome to the LLM Wiki for Prof. Juan José Díaz-Mochón's academic portfolio. This knowledge base integrates his publications, patents, doctoral theses, UGR courses, advanced methods, and advanced research methods.
+
+## 🌐 Navigation Hub (Version 2)
+
+| Section | Links | Description |
+| :--- | :--- | :--- |
+| **Academic Profile** | [Professor Profile](profile/Professor_Profile.md) <br> [Research Overview & Axes](profile/Research_Overview.md) | Dr. Juanjo's professional track record, responsibilities, and 6 core research axes. |
+| **Courses & Teaching** | [Teaching Overview](courses/Overview.md) <br> [Química Farmacéutica I (QFUNO)](courses/QFUNO.md) <br> [Química Farmacéutica II (QFDOS)](courses/QFDOS.md) <br> [Química Orgánica (QO)](courses/QO_UGR.md) <br> [Translational Medicine (TRANSMED)](courses/TRANSMED.md) | Undergraduate and postgraduate courses mapped out from first principles (biological software engineering). |
+| **Methods & Technologies** | [Methods Overview](methods/Methods_Overview.md) <br> [Dynamic Chemical Labeling (DCL)](methods/Dynamic_Chemical_Labeling.md) <br> [SMART Probes (Abasic PNA)](methods/SMART_Probes.md) <br> [RiboTAC Degraders](methods/RiboTAC_Degraders.md) <br> [DNA-Encoded Libraries (DEL)](methods/DNA_Encoded_Libraries.md) <br> [drug2cell Pipeline](methods/drug2cell_Pipeline.md) <br> [Micro-C & snm3C-seq](methods/Micro_C_snm3C_seq.md) | The biological and computational "tooling" of the lab, explained through systems/programming analogies. |
+| **Concepts & Opportunities** | [Concepts & Glossary](concepts/Glossary.md) <br> [Open Questions & Grants](open-questions-opportunities/Open_Questions.md) <br> [Wiki Personalization Checklist](profile/Missing_Information.md) | Centralized terms index, active scientific debates, EIC/ERC funding, and missing wiki files. |
+
+***
 
 ## 📄 Articles by Year
 
