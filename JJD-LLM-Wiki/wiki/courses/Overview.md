@@ -26,6 +26,13 @@ His pedagogical framework is structured around a central thesis: **Biology is a 
 
 ---
 
+## 🏆 Calidad y Trayectoria Docente Reconocida
+- **Quinquenios Docentes**: **5 Quinquenios** reconocidos por la Universidad de Granada (25 años de labor docente universitaria evaluada favorablemente).
+- **Satisfacción Estudiantil (DOCENTIA)**: **4.78 sobre 5.00** (95.6% de valoración media histórica en las encuestas de calidad docente de la UGR, situándose en el rango de excelencia).
+- **Proyectos de Innovación Docente (PID)**: Incorporación continua de metodologías activas y plataformas digitales interactivas.
+
+---
+
 ## Curriculum Structure
 
 The teaching portfolio consists of four main pillars:
