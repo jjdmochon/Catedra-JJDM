@@ -1005,8 +1005,17 @@
             <div class="menu-item" onclick="switchTab('theses')">
                 <i data-lucide="graduation-cap"></i> Doctoral Theses
             </div>
+            <div class="menu-item" onclick="switchTab('courses')">
+                <i data-lucide="library"></i> Docencia & Asignaturas UGR
+            </div>
+            <div class="menu-item" onclick="switchTab('methods')">
+                <i data-lucide="flask-conical"></i> Métodos & Tecnologías
+            </div>
             <div class="menu-item" onclick="switchTab('ontology')">
-                <i data-lucide="network"></i> Ontology / Concepts
+                <i data-lucide="network"></i> Ontología / Conceptos
+            </div>
+            <div class="menu-item" onclick="switchTab('glossary')">
+                <i data-lucide="book-marked"></i> Glosario & Retos
             </div>
             <div class="menu-item" onclick="switchTab('log')">
                 <i data-lucide="history"></i> Ingestion Log
@@ -1130,9 +1139,10 @@
             
             // Find active menu item
             const triggerIdx = {
-                'dashboard': 0, 'publications': 1, 'patents': 2, 'theses': 3, 'ontology': 4, 'log': 5
+                'dashboard': 0, 'publications': 1, 'patents': 2, 'theses': 3, 
+                'courses': 4, 'methods': 5, 'ontology': 6, 'glossary': 7, 'log': 8
             }[tabId];
-            menuItems[triggerIdx].classList.add('active');
+            if (menuItems[triggerIdx]) menuItems[triggerIdx].classList.add('active');
             
             // Close reader when switching main tab
             closeReader();
@@ -1142,7 +1152,10 @@
             else if (tabId === 'publications') renderPublications();
             else if (tabId === 'patents') renderPatents();
             else if (tabId === 'theses') renderTheses();
+            else if (tabId === 'courses') renderCourses();
+            else if (tabId === 'methods') renderMethods();
             else if (tabId === 'ontology') renderOntology();
+            else if (tabId === 'glossary') renderGlossary();
             else if (tabId === 'log') renderLog();
         }
 
@@ -1432,6 +1445,163 @@
             lucide.createIcons();
         }
 
+        // Render Courses & Docencia UGR
+        function renderCourses() {
+            const content = document.getElementById('main-content');
+            const coursesList = [
+                {
+                    title: "Filosofía Docente & Visión Global",
+                    subtitle: "Marco pedagógico, primeros principios y analogía 'Biología como Software'",
+                    code: "DOC-GLOBAL",
+                    level: "Grado & Posgrado UGR",
+                    link: "courses/Overview.md",
+                    desc: "Metodología docente activa centrada en la resolución de problemas moleculares, intuición química y modelado cuantitativo."
+                },
+                {
+                    title: "Química Farmacéutica I (QFUNO)",
+                    subtitle: "Diana-fármaco, farmacocinética, bioisosterismo y optimización de líderes",
+                    code: "3º Grado Farmacia",
+                    level: "UGR · 6 ECTS",
+                    link: "courses/QFUNO.md",
+                    desc: "Fuerzas de unión fármaco-receptor, parámetros fisicoquímicos (Lipinski), metabolismo de xenobióticos y análogos de purinas."
+                },
+                {
+                    title: "Química Farmacéutica II (QFDOS)",
+                    subtitle: "Familias terapéuticas, antivirales, agentes antitumorales y antibióticos",
+                    code: "4º Grado Farmacia",
+                    level: "UGR · 6 ECTS",
+                    link: "courses/QFDOS.md",
+                    desc: "Inhibidores de quinasas (DAPK1), agentes alquilantes, análogos nucleosídicos, antibacterianos y terapia dirigida."
+                },
+                {
+                    title: "Química Orgánica (Grado)",
+                    subtitle: "Mecanismos de reacción, síntesis heterocíclica y química de biomoléculas",
+                    code: "2º Grado UGR",
+                    level: "UGR · Troncal",
+                    link: "courses/QO_UGR.md",
+                    desc: "Sustitución nucleófila aromática, cicloadiciones, síntesis de purinas/pirimidinas y protección ortogonal (Fmoc/Dde)."
+                },
+                {
+                    title: "Máster TRANSMED & Medicina Traslacional",
+                    subtitle: "Diagnóstico molecular PCR-free, biopsia líquida y tecnologías biomédicas",
+                    code: "Posgrado Oficial",
+                    level: "UGR & GENYO · Máster",
+                    link: "courses/TRANSMED.md",
+                    desc: "Transferencia clínica, biomarcadores de ARN (miRNA-122), plataformas multiplexadas (Luminex) y validación clínica ISO."
+                }
+            ];
+
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">🎓 Docencia & Asignaturas UGR</h1>
+                    <div class="dashboard-subtitle">Programas docentes, guías didácticas, conceptos clave y proyectos pedagógicos.</div>
+                </div>
+
+                <div class="grid-entities" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                    ${coursesList.map(c => `
+                        <div class="entity-card" onclick="openDocument('${c.title}', '${c.link}')" style="border-left: 4px solid var(--primary);">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <div class="entity-stats">${c.code} · ${c.level}</div>
+                                <i data-lucide="book-open" style="color:var(--primary); width:18px; height:18px;"></i>
+                            </div>
+                            <div class="entity-title" style="margin-top:4px;">${c.title}</div>
+                            <div style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">${c.subtitle}</div>
+                            <div class="entity-desc" style="margin-top:6px;">${c.desc}</div>
+                            <div style="margin-top:auto; padding-top:12px; display:flex; justify-content:flex-end;">
+                                <span style="font-size:0.82rem; font-weight:700; color:var(--primary); display:flex; align-items:center; gap:4px;">
+                                    Ver Guía Docente & Temario ↗
+                                </span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Render Methods & Technologies
+        function renderMethods() {
+            const content = document.getElementById('main-content');
+            const methodsList = [
+                {
+                    title: "Dynamic Chemical Labeling (DCL)",
+                    subtitle: "Detección enzimática directa de ácidos nucleicos con especificidad de base única",
+                    badge: "Tecnología DESTINA",
+                    link: "methods/Dynamic_Chemical_Labeling.md",
+                    desc: "Reacción química libre de PCR donde una base reactiva (SMART Base) sella reversible/irreversiblemente una sonda abásica de PNA frente al ARN/ADN diana."
+                },
+                {
+                    title: "SMART Probes & PNA Abásico",
+                    subtitle: "Sondas de Peptide Nucleic Acid con posición abásica para interrogación de SNVs",
+                    badge: "Química Supramolecular",
+                    link: "methods/SMART_Probes.md",
+                    desc: "Estructura peptídica neutra resistente a nucleasas que híbrida con afinidad ultra-alta y discrimina mutaciones puntuales en miRNAs y genes (KRAS, BRAF)."
+                },
+                {
+                    title: "RiboTAC RNA Degraders",
+                    subtitle: "Quimeras bifuncionales dirigidas a la degradación de ARN mediante RNasa L",
+                    badge: "Terapia Dirigida",
+                    link: "methods/RiboTAC_Degraders.md",
+                    desc: "Moléculas quiméricas que reclutan RNasa L endógena para escindir transcritos oncogénicos y ARN estructurado de forma catalítica."
+                },
+                {
+                    title: "Librerías Codificadas con ADN (DEL)",
+                    subtitle: "Química combinatoria y cribado masivo en fase sólida / solución",
+                    badge: "Drug Discovery",
+                    link: "methods/DNA_Encoded_Libraries.md",
+                    desc: "Síntesis combinatoria 'split-and-pool' con etiquetas oligonucleotídicas para cribar millones de moléculas simultáneamente frente a dianas terapéuticas."
+                },
+                {
+                    title: "drug2cell Single-Cell Pipeline",
+                    subtitle: "Mapeo de respuestas a fármacos y reposicionamiento a resolución de célula única",
+                    badge: "Biología Computacional",
+                    link: "methods/drug2cell_Pipeline.md",
+                    desc: "Herramienta computacional que proyecta firmas de expresión scRNA-seq sobre bases de datos de bioactividad molecular y conectividad génica."
+                },
+                {
+                    title: "Micro-C & snm3C-seq (Genómica 3D)",
+                    subtitle: "Conformación cromatínica 3D a resolución de nucleosoma y metiloma unicelular",
+                    badge: "Epigenómica",
+                    link: "methods/Micro_C_snm3C_seq.md",
+                    desc: "Mapeo de interacciones de bucles promotor-enhancer y modificaciones epigenéticas acopladas a la regulación transcripcional."
+                },
+                {
+                    title: "Methods & Technologies Overview",
+                    subtitle: "Visión global del toolkit metodológico del laboratorio NanoChemBio",
+                    badge: "Toolkit Integral",
+                    link: "methods/Methods_Overview.md",
+                    desc: "Catálogo completo de tecnologías analíticas, síntesis orgánica en microondas, espectrometría MALDI-TOF, citometría y Luminex."
+                }
+            ];
+
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">🔬 Métodos & Tecnologías de Laboratorio</h1>
+                    <div class="dashboard-subtitle">Fundamentos químicos, protocolos operativos, aplicaciones diagnósticas y ventajas técnicas.</div>
+                </div>
+
+                <div class="grid-entities" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                    ${methodsList.map(m => `
+                        <div class="entity-card" onclick="openDocument('${m.title}', '${m.link}')" style="border-left: 4px solid var(--secondary);">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <span class="badge" style="font-size:0.75rem;">${m.badge}</span>
+                                <i data-lucide="flask-conical" style="color:var(--secondary); width:18px; height:18px;"></i>
+                            </div>
+                            <div class="entity-title" style="margin-top:8px;">${m.title}</div>
+                            <div style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">${m.subtitle}</div>
+                            <div class="entity-desc" style="margin-top:6px;">${m.desc}</div>
+                            <div style="margin-top:auto; padding-top:12px; display:flex; justify-content:flex-end;">
+                                <span style="font-size:0.82rem; font-weight:700; color:var(--secondary); display:flex; align-items:center; gap:4px;">
+                                    Ver Protocolo & Fundamento ↗
+                                </span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
         // Render Ontology & Concepts
         function renderOntology() {
             const content = document.getElementById('main-content');
@@ -1472,6 +1642,75 @@
                             <div class="entity-title">${r.name}</div>
                             <div class="entity-stats">${r.stats}</div>
                             <div class="entity-desc">${r.description}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // Render Glossary & Strategic Challenges
+        function renderGlossary() {
+            const content = document.getElementById('main-content');
+            const items = [
+                {
+                    title: "📖 Glosario Maestro de Términos & Acrónimos",
+                    subtitle: "Definiciones canónicas de química biológica, plataformas diagnósticas y biomarcadores (A-Z)",
+                    badge: "Terminología",
+                    link: "concepts/Glossary.md",
+                    desc: "Compendio de conceptos: DCL, SMART-Bases, PNA abásico, Luminex xMAP, MALDI-TOF, miRNA-122, Biopsia Líquida, CTCs y más."
+                },
+                {
+                    title: "❓ Preguntas Abiertas & Oportunidades I+D",
+                    subtitle: "Retos científicos activos, hipótesis de investigación y convocatorias de financiación",
+                    badge: "Estrategia Científica",
+                    link: "open-questions-opportunities/Open_Questions.md",
+                    desc: "Líneas de frontera: sensibilidad DCL en ultratrazas, degradadores RiboTAC in vivo, modelos predictivos GDL-PNA y escalado clínico."
+                },
+                {
+                    title: "👨‍🏫 Perfil del Investigador & Trayectoria",
+                    subtitle: "Candidato a Cátedra de Universidad: balance investigador, docente y de transferencia",
+                    badge: "Perfil Académico",
+                    link: "profile/Professor_Profile.md",
+                    desc: "Historial completo de plazas, dirección de 11 tesis doctorales, proyectos internacionales y creación de spin-offs."
+                },
+                {
+                    title: "🔭 Resumen de Investigación & 6 Ejes I+D",
+                    subtitle: "Ejes temáticos: Biología Química, Diagnóstico PCR-Free, Nanomedicina y Biopsia Líquida",
+                    badge: "Líneas I+D",
+                    link: "profile/Research_Overview.md",
+                    desc: "Estructura de las líneas maestras de I+D desarrolladas en Edimburgo, Southampton, UGR y Centro GENYO."
+                },
+                {
+                    title: "📋 Checklist de Información Faltante",
+                    subtitle: "Puntos de extensión y actualización para futuras ingestas documentales",
+                    badge: "Control de Calidad",
+                    link: "profile/Missing_Information.md",
+                    desc: "Inventario de fuentes pendientes de digitalización (grabaciones docentes, memorias de patentes adicionales)."
+                }
+            ];
+
+            content.innerHTML = `
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">📖 Glosario, Retos & Perfil Académico</h1>
+                    <div class="dashboard-subtitle">Documentos estratégicos, compendio terminológico y líneas de investigación de frontera.</div>
+                </div>
+
+                <div class="grid-entities" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
+                    ${items.map(it => `
+                        <div class="entity-card" onclick="openDocument('${it.title}', '${it.link}')" style="border-left: 4px solid var(--accent);">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                                <span class="badge" style="font-size:0.75rem;">${it.badge}</span>
+                                <i data-lucide="book-marked" style="color:var(--accent); width:18px; height:18px;"></i>
+                            </div>
+                            <div class="entity-title" style="margin-top:8px;">${it.title}</div>
+                            <div style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">${it.subtitle}</div>
+                            <div class="entity-desc" style="margin-top:6px;">${it.desc}</div>
+                            <div style="margin-top:auto; padding-top:12px; display:flex; justify-content:flex-end;">
+                                <span style="font-size:0.82rem; font-weight:700; color:var(--accent); display:flex; align-items:center; gap:4px;">
+                                    Leer Documento Completo ↗
+                                </span>
+                            </div>
                         </div>
                     `).join('')}
                 </div>
