@@ -8,24 +8,16 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Marked Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Marked Markdown Parser -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Mermaid.js for Mindmaps and Visual Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     
     <style>
         :root {
@@ -799,6 +791,97 @@
             margin: 20px 0;
             border: 1px solid var(--border-color);
         }
+
+        /* ── Markdown Tables (Modern Genyo Fusion Styling) ── */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 24px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            text-align: left;
+            margin: 0;
+        }
+
+        .markdown-body thead {
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            color: #ffffff;
+        }
+
+        .markdown-body th {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 14px 18px;
+            color: #ffffff;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .markdown-body td {
+            padding: 13px 18px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.55;
+            vertical-align: middle;
+            transition: background-color 0.2s ease;
+        }
+
+        .markdown-body tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .markdown-body tbody tr:nth-child(even) {
+            background-color: rgba(0, 128, 128, 0.025);
+        }
+
+        .markdown-body tbody tr:hover {
+            background-color: rgba(0, 128, 128, 0.06);
+            color: var(--text-primary);
+        }
+
+        .markdown-body td strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ── Mermaid Mindmaps & Diagrams Container ── */
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 28px 20px;
+            margin: 24px 0;
+            overflow-x: auto;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .mermaid:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-hover);
+        }
+
+        .mermaid svg {
+            max-width: 100% !important;
+            height: auto !important;
+            font-family: 'Montserrat', sans-serif !important;
+        }
         
         /* Timeline Log view */
         .timeline {
@@ -1127,6 +1210,15 @@
             document.getElementById('theme-toggle-icon').setAttribute('data-lucide', isDark ? 'sun' : 'moon');
             document.getElementById('theme-toggle-text').innerText = isDark ? 'Light Mode' : 'Dark Mode';
             lucide.createIcons();
+
+            // Re-render reader if open and contains diagrams
+            if (currentLoadedItem && document.getElementById('reader').classList.contains('open')) {
+                if (readerActiveSubTab === 'summary' && currentLoadedItem.summaryLink) {
+                    loadReaderContent(currentLoadedItem.summaryLink);
+                } else if (currentLoadedItem.fullTextLink) {
+                    loadReaderContent(currentLoadedItem.fullTextLink);
+                }
+            }
         }
 
         // Switch Navigation Tab
@@ -1817,8 +1909,70 @@
                 
                 body.innerHTML = marked.parse(cleanText);
                 
-                // Hack: Lucide icons render
+                // 1. Wrap all tables in a responsive scroll container
+                body.querySelectorAll('table').forEach(table => {
+                    if (!table.parentElement.classList.contains('table-responsive')) {
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'table-responsive';
+                        table.parentElement.insertBefore(wrapper, table);
+                        wrapper.appendChild(table);
+                    }
+                });
+
+                // 2. Identify Mermaid diagram blocks (mindmaps, flowcharts, graphs)
+                const codeBlocks = body.querySelectorAll('pre code');
+                const mermaidNodes = [];
+                codeBlocks.forEach(codeBlock => {
+                    const codeText = codeBlock.textContent.trim();
+                    const isMermaid = codeBlock.classList.contains('language-mermaid') || 
+                                      codeBlock.classList.contains('language-mindmap') ||
+                                      codeText.startsWith('mindmap') || 
+                                      codeText.startsWith('graph ') || 
+                                      codeText.startsWith('graph\n') ||
+                                      codeText.startsWith('flowchart ') || 
+                                      codeText.startsWith('flowchart\n') ||
+                                      codeText.startsWith('sequenceDiagram') || 
+                                      codeText.startsWith('classDiagram') || 
+                                      codeText.startsWith('gantt') ||
+                                      codeText.startsWith('pie');
+                    if (isMermaid) {
+                        const mermaidDiv = document.createElement('div');
+                        mermaidDiv.className = 'mermaid';
+                        mermaidDiv.textContent = codeText;
+                        const pre = codeBlock.parentElement;
+                        pre.parentElement.replaceChild(mermaidDiv, pre);
+                        mermaidNodes.push(mermaidDiv);
+                    }
+                });
+
+                // 3. Render Lucide icons
                 lucide.createIcons();
+
+                // 4. Render Mermaid diagrams if present
+                if (window.mermaid && mermaidNodes.length > 0) {
+                    try {
+                        const isDark = document.body.classList.contains('dark-theme');
+                        mermaid.initialize({
+                            startOnLoad: false,
+                            theme: isDark ? 'dark' : 'base',
+                            themeVariables: {
+                                primaryColor: '#008080',
+                                primaryTextColor: '#ffffff',
+                                primaryBorderColor: '#00a6a6',
+                                lineColor: '#3EB489',
+                                secondaryColor: '#3EB489',
+                                tertiaryColor: '#f0fdfa',
+                                fontFamily: 'Montserrat, sans-serif',
+                                fontSize: '14px'
+                            }
+                        });
+                        await mermaid.run({
+                            nodes: mermaidNodes
+                        });
+                    } catch (mErr) {
+                        console.warn("Mermaid diagram render error:", mErr);
+                    }
+                }
             } catch (err) {
                 body.innerHTML = `<div style="color:var(--danger); padding:20px; text-align:center">Error loading summary file.</div>`;
             }
