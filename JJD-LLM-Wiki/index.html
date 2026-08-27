@@ -1922,7 +1922,7 @@
                 // 2. Identify Mermaid diagram blocks (mindmaps, flowcharts, graphs)
                 const codeBlocks = body.querySelectorAll('pre code');
                 const mermaidNodes = [];
-                codeBlocks.forEach(codeBlock => {
+                codeBlocks.forEach((codeBlock, idx) => {
                     const codeText = codeBlock.textContent.trim();
                     const isMermaid = codeBlock.classList.contains('language-mermaid') || 
                                       codeBlock.classList.contains('language-mindmap') ||
@@ -1938,6 +1938,7 @@
                     if (isMermaid) {
                         const mermaidDiv = document.createElement('div');
                         mermaidDiv.className = 'mermaid';
+                        mermaidDiv.id = 'mermaid-node-' + idx + '-' + Date.now();
                         mermaidDiv.textContent = codeText;
                         const pre = codeBlock.parentElement;
                         pre.parentElement.replaceChild(mermaidDiv, pre);
@@ -1954,6 +1955,7 @@
                         const isDark = document.body.classList.contains('dark-theme');
                         mermaid.initialize({
                             startOnLoad: false,
+                            securityLevel: 'loose',
                             theme: isDark ? 'dark' : 'base',
                             themeVariables: {
                                 primaryColor: '#008080',
@@ -1966,11 +1968,18 @@
                                 fontSize: '14px'
                             }
                         });
-                        await mermaid.run({
-                            nodes: mermaidNodes
-                        });
+                        // Use setTimeout to ensure DOM painted
+                        setTimeout(async () => {
+                            try {
+                                await mermaid.run({
+                                    nodes: mermaidNodes
+                                });
+                            } catch (renderErr) {
+                                console.warn("Mermaid run warning:", renderErr);
+                            }
+                        }, 50);
                     } catch (mErr) {
-                        console.warn("Mermaid diagram render error:", mErr);
+                        console.warn("Mermaid initialization warning:", mErr);
                     }
                 }
             } catch (err) {

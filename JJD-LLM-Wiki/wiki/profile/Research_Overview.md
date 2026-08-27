@@ -18,31 +18,31 @@ His research program is organized into 6 core axes (Líneas de Investigación):
 
 ```mermaid
 mindmap
-  root((Research Axes))
-    DCL & Nucleic Acid Chemistry
-      Dynamic Chemical Labeling
-      Abasic PNA Probes
-      SMART Bases
-    Liquid Biopsy
-      microRNA Panels (miR-122/miR-21)
-      Circulating Cells (CTCs)
-      Clinical DILI & Cancer Tracking
-    Nanotech & Theranostics
-      Polymer Nanoparticles
-      Intracellular Click Catalysts
-      Mass Cyto Nanotrackers
-    Point of Care Devices
-      Spin Tube Platforms
-      CoVradar & CoVreader
-      Leishmania Species Separation
-    High Throughput Biomaterials
-      Polymer Microarrays
-      PNA Encoded Libraries
-      Peptoid Transfection Vectors
-    Medicinal Chemistry
-      Trisubstituted Purines
-      Adenosine A1 Ligands
-      Fmoc Dde Orthogonality
+  root((Líneas I+D))
+    id1["DCL y Química de Ácidos Nucleicos"]
+      ["Dynamic Chemical Labeling (DCL)"]
+      ["Sondas PNA Abásicas"]
+      ["SMART Bases Reactivas"]
+    id2["Biopsia Líquida y Diagnóstico"]
+      ["Paneles microRNA (miR-122 / miR-21)"]
+      ["Células Circulantes (CTCs)"]
+      ["Toxicidad Hepática DILI y Cáncer"]
+    id3["Nanotecnología y Teragnosis"]
+      ["Nanopartículas Poliméricas"]
+      ["Nanocatalizadores Click Intracelulares"]
+      ["Nanotrackers para Citometría de Masas"]
+    id4["Dispositivos Point-of-Care"]
+      ["Plataforma Spin-Tube"]
+      ["Dispositivo CoVradar y CoVreader"]
+      ["Diferenciación de Especies de Leishmania"]
+    id5["Biomateriales y Alto Rendimiento"]
+      ["Microarrays de Polímeros"]
+      ["Librerías Codificadas en PNA (DEL)"]
+      ["Vectores de Transfección Peptoides"]
+    id6["Química Farmacéutica y Médica"]
+      ["Purinas Trisustituidas"]
+      ["Ligandos del Receptor de Adenosina A1"]
+      ["Ortogonalidad Fmoc / Dde"]
 ```
 
 ---
