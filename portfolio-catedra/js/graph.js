@@ -79,7 +79,7 @@ function initKnowledgeGraph() {
     { id: 'theme_crispr', label: 'CRISPR-Cas13 & Diagnóstico', desc: 'Dual-guide Cas13 para detección ultrasensible' },
     { id: 'theme_nano', label: 'Nanomedicina & Teranóstica', desc: 'Nanosistemas híbridos y nanotransportadores' },
     { id: 'theme_purines', label: 'Química Médica & Purinas', desc: 'Derivados purínicos, ligandos de receptores y síntesis mono-vaso' },
-    { id: 'theme_bionemo', label: 'IA en Drug Discovery', desc: 'BioNeMo, DiffDock, Boltz2, TabFM, Drug2cell' }
+    { id: 'theme_bionemo', label: 'IA en Drug Discovery', desc: 'BioNeMo, DiffDock, Boltz2, TabFM' }
   ];
   themes.forEach(th => {
     addNode(th.id, th.label, 'theme', 13, { desc: th.desc });
